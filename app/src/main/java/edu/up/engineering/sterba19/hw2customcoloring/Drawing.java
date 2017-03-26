@@ -17,8 +17,5 @@ public class Drawing extends SurfaceView{
         setWillNotDraw(false);
     }
 
-    public void onDraw(Canvas canvas)
-    {
-        
-    }
+
 }
