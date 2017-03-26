@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HW2 Custom Coloring</string>
+    <string name="default_message">Select an Object</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="redValue">50</string>
+    <string name="greenValue">100</string>
+    <string name="blueValue">150</string>
+</resources>
