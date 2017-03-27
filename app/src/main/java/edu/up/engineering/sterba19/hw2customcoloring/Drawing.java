@@ -20,10 +20,11 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
     int x = 750;
     int y = 750;
-    int r,g,b,selectedObjColor,tempColor;
+    int r,g,b,selectedObjColor;
     int ObjRGB[] = new int[3];
     String ObjectMessage;
     CustomCircle current, leftEar,rightEar,faceShape,leftEye,rightEye,nose;
+    //instantiates shape and initializes array
     public Drawing(Context context, AttributeSet attrs)
     {
         super(context,attrs);
@@ -41,6 +42,7 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
         setWillNotDraw(false);
     }
 
+    //Draws shapes
     @Override
     protected void onDraw(Canvas canvas)
     {
@@ -55,6 +57,8 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
     }
 
+    //First part of onTouch(other in main activity) sets current piece and
+    //gets that pieces color
     @Override
     public boolean onTouch(View v, MotionEvent event)
     {
@@ -118,6 +122,8 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
         return false;
     }
 
+    //Recieve color recieves the information from the seekBar
+    //and changes the colors in the array respectively
     public void recieveColor(int color,char c)
     {
 
@@ -134,10 +140,14 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
             ObjRGB[2] = color;
         }
 
+        //Personally written overload of setColor,
+        //takes in three ints and sets color of current
         current.setColor(ObjRGB[0],ObjRGB[1],ObjRGB[2]);
 
     }
 
+    //parseColor takes in the color and breaks it into rgb values
+    //stored in an array, then returns the original color
     public int parseColor(int initColor)
     {
         r = (initColor >> 16) & 0xff;
@@ -149,6 +159,8 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
         return initColor;
     }
 
+
+    //Getter's and Setters
     public String getObjectMessage(){return ObjectMessage;}
 
     public int getr(){return ObjRGB[0];}

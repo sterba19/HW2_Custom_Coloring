@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity{
     TextView ObjectNameView, RedValue, GreenValue, BlueValue;
     SeekBar RedSeek, BlueSeek, GreenSeek;
 
+    //Sets all objects and listeners
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity{
         surfaceView.invalidate();
     }
 
+    //Seekbar listener, sends color to drawing via recieveColor
     protected class seekBarSetup implements SeekBar.OnSeekBarChangeListener
     {
 
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity{
         public void onStopTrackingTouch(SeekBar seekBar) {}
     }
 
+    //Second part of OnTouch(first in Drawing) sets seek bars
+    //to color of current object
     public class tapper implements View.OnTouchListener
     {
 
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    //Helper method that sets seek bars, and text views
     public void setSeekBar(int initR, int initG, int initB)
     {
         RedSeek.setProgress(initR);
