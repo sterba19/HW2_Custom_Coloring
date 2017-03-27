@@ -92,7 +92,8 @@ public class MainActivity extends AppCompatActivity{
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            surfaceView.onTouch(v, event);
+
+            surfaceView.onTap(v, event);
 
             ObjectNameView.setText(surfaceView.getObjectMessage());
 

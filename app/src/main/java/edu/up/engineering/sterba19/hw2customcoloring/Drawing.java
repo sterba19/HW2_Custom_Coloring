@@ -16,10 +16,16 @@ import android.widget.TextView;
 /**
  * Created by sterba19 on 3/26/2017.
  */
-public class Drawing extends SurfaceView implements View.OnTouchListener{
+public class Drawing extends SurfaceView{
 
     int x = 750;
     int y = 750;
+    int leftEarColor = 0xFF00FF00;
+    int rightEarColor = 0xFF0000FF;
+    int faceColor = 0xFFFF0000;
+    int leftEyeColor = 0xFF000000;
+    int rightEyeColor = 0xFFFFFFFF;
+    int noseColor = 0xFFFFFF00;
     int r,g,b,selectedObjColor;
     int ObjRGB[] = new int[3];
     String ObjectMessage;
@@ -32,12 +38,12 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
         ObjRGB[0] = 50;
         ObjRGB[1] = 100;
         ObjRGB[2] = 150;
-        leftEar = new CustomCircle("Left Ear",0xFF00FF00,x-300,y-400,250);
-        rightEar = new CustomCircle("Right Ear",0xFF0000FF,x+300,y-400,250);
-        faceShape = new CustomCircle("Bear Face",0xFFFF0000,x,y,500);
-        leftEye = new CustomCircle("Left Eye",0xFF000000, x-200,y-150,90);
-        rightEye = new CustomCircle("Right Eye",0xFFFFFFFF, x+200,y-150,90);
-        nose = new CustomCircle("Nose",0xFFFFFF00, x, y+150,90);
+        leftEar = new CustomCircle("Left Ear",leftEarColor,x-300,y-400,250);
+        rightEar = new CustomCircle("Right Ear",rightEarColor,x+300,y-400,250);
+        faceShape = new CustomCircle("Bear Face",faceColor,x,y,500);
+        leftEye = new CustomCircle("Left Eye",leftEyeColor, x-200,y-150,90);
+        rightEye = new CustomCircle("Right Eye",rightEyeColor, x+200,y-150,90);
+        nose = new CustomCircle("Nose",noseColor, x, y+150,90);
 
         setWillNotDraw(false);
     }
@@ -59,8 +65,7 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
     //First part of onTouch(other in main activity) sets current piece and
     //gets that pieces color
-    @Override
-    public boolean onTouch(View v, MotionEvent event)
+    public boolean onTap(View v, MotionEvent event)
     {
         int x = (int)event.getX();
         int y = (int)event.getY();
@@ -71,7 +76,6 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             nose.setColor(parseColor(selectedObjColor));
             current = nose;
-            this.invalidate();
             return true;
         }else if(rightEye.containsPoint(x,y))
         {
@@ -80,7 +84,6 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             rightEye.setColor(parseColor(selectedObjColor));
             current = rightEye;
-            this.invalidate();
             return true;
         }else if(leftEye.containsPoint(x,y))
         {
@@ -89,7 +92,6 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             leftEye.setColor(parseColor(selectedObjColor));
             current = leftEye;
-            this.invalidate();
             return true;
         }else if(faceShape.containsPoint(x,y))
         {
@@ -98,7 +100,6 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             faceShape.setColor(parseColor(selectedObjColor));
             current = faceShape;
-            this.invalidate();
             return true;
         }else if(leftEar.containsPoint(x,y))
         {
@@ -107,7 +108,6 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             leftEar.setColor(parseColor(selectedObjColor));
             current = leftEar;
-            this.invalidate();
             return true;
         }else if(rightEar.containsPoint(x,y))
         {
@@ -116,9 +116,9 @@ public class Drawing extends SurfaceView implements View.OnTouchListener{
 
             rightEar.setColor(parseColor(selectedObjColor));
             current = rightEar;
-            this.invalidate();
             return true;
         }
+        this.invalidate();
         return false;
     }
 
