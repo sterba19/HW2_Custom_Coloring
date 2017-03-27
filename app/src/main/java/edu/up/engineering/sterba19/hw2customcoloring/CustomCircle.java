@@ -1,6 +1,7 @@
 package edu.up.engineering.sterba19.hw2customcoloring;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 /**
@@ -34,6 +35,8 @@ public class CustomCircle extends CustomElement {
 	
 	@Override
 	public void drawMe(Canvas canvas) {
+
+		myPaint.setStyle(Paint.Style.FILL);
 		canvas.drawCircle(x, y, radius, myPaint);  //main circle
 		canvas.drawCircle(x, y, radius, outlinePaint);  //outline around circle
 	}

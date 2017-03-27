@@ -26,7 +26,7 @@ public abstract class CustomElement {
 	public static final int TAP_MARGIN = 10;
 
 	/** This defines the main color that the element will be drawn with */
-	protected Paint myPaint = new Paint();
+	Paint myPaint = new Paint();
 
 	/** this color is used to draw outlines around a shape */
 	protected Paint outlinePaint = new Paint();
@@ -77,6 +77,12 @@ public abstract class CustomElement {
 
 		// make the change
 		this.myPaint.setColor(color);
+	}
+
+	public void setColor(int r, int g, int b)
+	{
+		int temp = Color.rgb(r,g,b);
+        setColor(temp);
 	}
 
 	/** get the color */
